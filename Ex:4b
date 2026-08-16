@@ -1,4 +1,4 @@
-PROGRAM: 
+koiPROGRAM: 
 #include <stdio.h> 
 #include <stdlib.h> 
 // Node structure definition 
@@ -76,3 +76,86 @@ void enqueue(struct Queue* queue, int data) {
  return;
  }
  queue->rear->next = newNode;
+ queue->rear = newNode;
+ printf("Element enqueued: %d\n", data);
+} 
+// Function to dequeue an element from the queue 
+int dequeue(struct Queue* queue) {
+ if (queue->front == NULL) {
+ printf("Error: Queue underflow. Cannot dequeue element.\n");
+ return -1;
+ } 
+struct Node* temp = queue->front;
+ int dequeuedElement = temp->data;
+ queue->front = queue->front->next;
+ if (queue->front == NULL) { 
+ queue->rear = NULL;
+ }
+ free(temp);
+ return dequeuedElement;
+} 
+// Function to display the queue elements 
+void displayQueue(struct Queue* queue) {
+ if (queue->front == NULL) {
+ printf("Queue is empty.\n");
+ return;
+ }
+ printf("Queue elements: ");
+ struct Node* temp = queue->front;
+ while (temp != NULL) {
+ printf("%d->", temp->data);
+ temp = temp->next;
+ }
+ printf("NULL\n");
+} 
+OUTPUT: 
+Queue Operations Menu: 
+1. Enqueue 
+2. Dequeue 
+3. Display 
+4. Exit 
+Enter your choice: 1 
+Enter element to enqueue: 10 
+Element enqueued: 10 
+Queue Operations Menu: 
+1. Enqueue 
+2. Dequeue 
+3. Display 
+4. Exit 
+Enter your choice: 1 
+Enter element to enqueue: 20 
+Element enqueued: 20 
+Queue Operations Menu: 
+1. Enqueue 
+2. Dequeue 
+3. Display 
+4. Exit 
+Enter your choice: 1 
+Enter element to enqueue: 30 
+Element enqueued: 30 
+Queue Operations Menu: 
+1. Enqueue 
+2. Dequeue 
+3. Display 
+4. Exit 
+Enter your choice: 3 
+Queue elements: 10 20 30 
+Queue Operations Menu: 
+1. Enqueue 
+2. Dequeue 
+3. Display 
+4. Exit Enter your choice: 2 
+Dequeued element: 10 
+Queue Operations Menu: 
+1. Enqueue 
+2. Dequeue 
+3. Display 
+4. Exit 
+Enter your choice: 3 
+Queue elements: 20 30 
+Queue Operations Menu: 
+1. Enqueue 
+2. Dequeue 
+3. Display 
+4. Exit 
+Enter your choice: 4
