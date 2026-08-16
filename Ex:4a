@@ -1,0 +1,26 @@
+PROGRAM
+#include <stdio.h> 
+#include <stdlib.h> 
+// Node structure definition 
+struct Node {
+ int data;
+ struct Node* next;
+}; 
+// Function prototypes 
+struct Node* createNode(int data); 
+void push(struct Node** top, int data); 
+int pop(struct Node** top); 
+void displayStack(struct Node* top);
+int main() {
+ struct Node* top = NULL;
+ int choice, element;
+ while (1) {
+ printf("\nStack Operations Menu:\n");
+ printf("1. Push\n");
+ printf("2. Pop\n");
+ printf("3. Display\n");
+ printf("4. Exit\n");
+ printf("Enter your choice: ");
+ scanf("%d", &choice);
+ switch (choice) {
+ case 1
